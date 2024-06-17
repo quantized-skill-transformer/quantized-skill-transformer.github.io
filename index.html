@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Robotic Tasks</title>
+    <style>
+        #video-container {
+            width: 640px;
+            height: 360px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Robotic Tasks</h1>
+    <label for="task-select">Select a task:</label>
+    <select id="task-select">
+        <option value="">-- Select a task --</option>
+        <option value="task1">Task 1</option>
+        <option value="task2">Task 2</option>
+        <option value="task3">Task 3</option>
+        <!-- Add more tasks here -->
+    </select>
+
+    <div id="video-container">
+        <!-- Video will be displayed here -->
+    </div>
+
+    <script>
+        const taskSelect = document.getElementById('task-select');
+        const videoContainer = document.getElementById('video-container');
+
+        taskSelect.addEventListener('change', function() {
+            const selectedTask = taskSelect.value;
+            const videoPath = `media/${selectedTask}.mp4`;
+
+            // Clear the video container
+            videoContainer.innerHTML = '';
+
+            // Create a new video element and append it to the container
+            const video = document.createElement('video');
+            video.src = videoPath;
+            video.controls = true;
+            video.width = 640;
+            video.height = 360;
+            videoContainer.appendChild(video);
+        });
+    </script>
+</body>
+</html>
