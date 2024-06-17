@@ -1,50 +1,679 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Robotic Tasks</title>
-    <style>
-        #video-container {
-            width: 640px;
-            height: 360px;
-            border: 1px solid #ccc;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Robotic Tasks</h1>
-    <label for="task-select">Select a task:</label>
-    <select id="task-select">
-        <option value="">-- Select a task --</option>
-        <option value="task1">Task 1</option>
-        <option value="task2">Task 2</option>
-        <option value="task3">Task 3</option>
-        <!-- Add more tasks here -->
-    </select>
 
-    <div id="video-container">
-        <!-- Video will be displayed here -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<script src="bootstrap.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style type="text/css">
+body {
+    font-family: "Titillium Web", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 980px){
+    body {
+        width: 980px;
+    }
+}
+
+h1 {
+    font-weight:300;
+    line-height: 1.15em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+a:link,a:visited {
+    color: #5364cc;
+    text-decoration: none;
+}
+a:hover {
+    color: #208799;
+}
+h1 {
+    text-align: center;
+}
+h2,h3 {
+    text-align: left;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 500;
+}
+h2 {
+    font-weight: 400;
+    margin: 16px 0px 4px 0px;
+}
+h3 {
+    font-weight: 600;
+    margin: 16px 0px 4px 0px;
+}
+
+.paper-title {
+    padding: 1px 0px 1px 0px;
+}
+section {
+    margin: 32px 0px 32px 0px;
+    text-align: justify;
+    clear: both;
+}
+.col-5 {
+     width: 20%;
+     float: left;
+}
+.col-4 {
+     width: 25%;
+     float: left;
+}
+.col-3 {
+     width: 33%;
+     float: left;
+}
+.col-2 {
+     width: 50%;
+     float: left;
+}
+.col-1 {
+     width: 100%;
+     float: left;
+}
+
+.author-row, .affil-row {
+    font-size: 26px;
+}
+
+.author-row-new { 
+    text-align: center; 
+}
+
+.author-row-new a {
+    display: inline-block;
+    font-size: 20px;
+    padding: 4px;
+}
+
+.author-row-new sup {
+    color: #313436;
+    font-size: 12px;
+}
+
+.affiliations-new {
+    font-size: 18px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.row {
+    margin: 16px 0px 16px 0px;
+}
+.authors {
+    font-size: 26px;
+}
+.affiliatons {
+    font-size: 18px;
+}
+.affil-row {
+    margin-top: 18px;
+}
+.teaser {
+    max-width: 100%;
+}
+.text-center {
+    text-align: center;  
+}
+.screenshot {
+    width: 256px;
+    border: 1px solid #ddd;
+}
+.screenshot-el {
+    margin-bottom: 16px;
+}
+hr {
+    height: 1px;
+    border: 0; 
+    border-top: 1px solid #ddd;
+    margin: 0;
+}
+.material-icons {
+    vertical-align: -6px;
+}
+p {
+    line-height: 1.25em;
+}
+.caption {
+    font-size: 16px;
+    color: #666;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+
+video {
+    display: block;
+    margin: auto;
+}
+
+
+figure {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#bibtex pre {
+    font-size: 14px;
+    background-color: #eee;
+    padding: 16px;
+}
+.blue {
+    color: #2c82c9;
+    font-weight: bold;
+}
+.orange {
+    color: #d35400;
+    font-weight: bold;
+}
+.flex-row {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.paper-btn-coming-soon {
+    position: relative; 
+    top: 0;
+    left: 0;
+}
+
+.coming-soon {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+
+.paper-btn {
+  position: relative;
+  text-align: center;
+
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 8px;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  
+  background-color: #5364cc;
+  color: white !important;
+  font-size: 20px;
+  width: 100px;
+  font-weight: 600;
+}
+.paper-btn-parent {
+    display: flex;
+    justify-content: center;
+    /* margin: 16px 0px; */
+    margin: 0px 0px;
+}
+
+.paper-btn:hover {
+    opacity: 0.85;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.venue {
+    font-size: 23px;
+}
+
+.topnav {
+    background-color: #EEEEEE;
+    overflow: hidden;
+}
+
+.topnav div {
+    max-width: 1070px;
+    margin: 0 auto;
+}
+
+.topnav a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+    padding: 16px 16px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.topnav img {
+    padding: 2px 0px;
+    width: 100%;
+    margin: 0.2em 0px 0.3em 0px;
+    vertical-align: middle;
+}
+
+pre {
+    font-size: 0.9em;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 3px;
+    background-color: rgb(235, 235, 235);
+    overflow-x: auto;
+}
+
+.download-thumb {
+    display: flex;
+}
+
+@media only screen and (max-width: 620px) {
+    .download-thumb {
+        display: none;
+    }
+}
+
+.paper-stuff {
+    width: 50%;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 620px) {
+    .paper-stuff {
+        width: 100%;
+    }
+}
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  text-align: center;
+  float: left;
+  width: 16.666%;
+  padding: 5px;
+}
+.column3 {
+  text-align: center;
+  float: left;
+  width: 33.333%;
+  padding: 5px;
+}
+.column4 {
+  text-align: center;
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+.column5 {
+  text-align: center;
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+.border-right {
+    border-right: 1px solid black;
+}
+.border-bottom{
+    border-bottom: 1px solid black;
+}
+
+
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+.figure-img {
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+
+
+
+
+
+
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+
+
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+  .column {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .column3 {
+    width: 100%;
+  }
+}
+
+</style>
+<link rel="stylesheet" href="bootstrap-grid.css">
+<link rel="icon" type="image/x-icon" href="mfiles/favicon.png">
+
+<script type="text/javascript" src="../js/hidebib.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
+    <head>
+        <title> BAKU: An Efficient Transformer for Multi-Task Policy Learning</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:description" content="BAKU: An Efficient Transformer for Multi-Task Policy Learning"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        <meta name="twitter:title" content="BAKU: An Efficient Transformer for Multi-Task Policy Learning">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="">
+    </head>
+
+ <body>
+
+
+<div class="container">
+    <div class="paper-title">
+    <h1> 
+        QueST: Self-Supervised Skill Abstractions for Continuous Control
     </div>
 
-    <script>
-        const taskSelect = document.getElementById('task-select');
-        const videoContainer = document.getElementById('video-container');
+    <div id="authors">
+        <center>
+            <div class="author-row-new">
+                Authors hidden while paper is under review,
+            </div>
+        </center>
+        <!-- <center> -->
+        <div class="affil-row">
+            <div class="venue text-center"><b>NeurIPS 2024 Submission</b></div>
+        </div>
 
-        taskSelect.addEventListener('change', function() {
-            const selectedTask = taskSelect.value;
-            const videoPath = `media/${selectedTask}.mp4`;
+        </center>
+        <br>
 
-            // Clear the video container
-            videoContainer.innerHTML = '';
+        <div style="clear: both">
+            <!-- <div class="paper-btn-parent">
+                <a class="paper-btn" href="">
+                        <span class="material-icons"> description </span> 
+                    Paper
+                </a> -->
+            <div class="paper-btn-parent">
+                <a class="paper-btn" href="https://openreview.net/pdf?id=P3v3x7HnV0">
+                        <span class="material-icons"> description </span> 
+                    PDF
+                </a>
+            <!-- <div class="paper-btn-coming-soon">
+                <a class="paper-btn" href="https://github.com/siddhanthaldar/BAKU/tree/main">
+                        <span class="material-icons"> code </span>
+                    Code
+                </a> -->
+            </div>
+        </div>
+    </div>
 
-            // Create a new video element and append it to the container
-            const video = document.createElement('video');
-            video.src = videoPath;
-            video.controls = true;
-            video.width = 640;
-            video.height = 360;
-            videoContainer.appendChild(video);
-        });
-    </script>
+
+    <style>
+        .embed-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        }
+        .embed-container iframe,
+        .embed-container object,
+        .embed-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        }
+    </style>
+    
+
+    <section id="method"/>
+        <style>
+            select {
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 5px;
+            }
+        
+            video {
+                display: block;
+                max-width: 500px;
+                margin-top: 20px;
+            }
+        </style>
+    </section>
+    <hr>
+    <section>
+        <h2>LIBERO-90 Rollouts</h2>
+        <br>
+        <label for="video-select1">Task:</label>
+        <select id="video-select1" onchange="displayVideo1()">
+            <option value="media/libero/multiIL-90/task_0">Close the top drawer of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_1">Close the top drawer of the cabinet and put the black bowl on top of it</option>
+            <option value="media/libero/multiIL-90/task_2">Put the black bowl in the top drawer of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_3">Put the butter at the back in the top drawer of the cabinet and close it</option>
+            <option value="media/libero/multiIL-90/task_4">Put the butter at the front in the top drawer of the cabinet and close it</option>
+            <option value="media/libero/multiIL-90/task_5">Put the chocolate pudding in the top drawer of the cabinet and close it</option>
+            <option value="media/libero/multiIL-90/task_6">Open the bottom drawer of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_7">Open the top drawer of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_8">Open the top drawer of the cabinet and put the bowl in it</option>
+            <option value="media/libero/multiIL-90/task_9">Put the black bowl on the plate</option>
+            <option value="media/libero/multiIL-90/task_10">Put the black bowl on top of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_11">Open the top drawer of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_12">Put the black bowl at the back on the plate</option>
+            <option value="media/libero/multiIL-90/task_13">Put the black bowl at the front on the plate</option>
+            <option value="media/libero/multiIL-90/task_14">Put the middle black bowl on the plate</option>
+            <option value="media/libero/multiIL-90/task_15">Put the middle black bowl on top of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_16">Stack the black bowl at the front on the black bowl in the middle</option>
+            <option value="media/libero/multiIL-90/task_17">Stack the middle black bowl on the back black bowl</option>
+            <option value="media/libero/multiIL-90/task_18">Put the frying pan on the stove</option>
+            <option value="media/libero/multiIL-90/task_19">Put the moka pot on the stove</option>
+            <option value="media/libero/multiIL-90/task_20">Turn on the stove</option>
+            <option value="media/libero/multiIL-90/task_21">Turn on the stove and put the frying pan on it</option>
+            <option value="media/libero/multiIL-90/task_22">Close the bottom drawer of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_23">Close the bottom drawer of the cabinet and open the top drawer</option>
+            <option value="media/libero/multiIL-90/task_24">Put the black bowl in the bottom drawer of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_25">Put the black bowl on top of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_26">Put the wine bottle in the bottom drawer of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_27">Put the wine bottle on the wine rack</option>
+            <option value="media/libero/multiIL-90/task_28">Close the top drawer of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_29">Put the black bowl in the top drawer of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_30">Put the black bowl on the plate</option>
+            <option value="media/libero/multiIL-90/task_31">Put the black bowl on top of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_32">Put the ketchup in the top drawer of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_33">Close the microwave</option>
+            <option value="media/libero/multiIL-90/task_34">Put the yellow and white mug to the front of the white mug</option>
+            <option value="media/libero/multiIL-90/task_35">Open the microwave</option>
+            <option value="media/libero/multiIL-90/task_36">Put the white bowl on the plate</option>
+            <option value="media/libero/multiIL-90/task_37">Put the white bowl to the right of the plate</option>
+            <option value="media/libero/multiIL-90/task_38">Put the right moka pot on the stove</option>
+            <option value="media/libero/multiIL-90/task_39">Turn off the stove</option>
+            <option value="media/libero/multiIL-90/task_40">Put the frying pan on the cabinet shelf</option>
+            <option value="media/libero/multiIL-90/task_41">Put the frying pan on top of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_42">Put the frying pan under the cabinet shelf</option>
+            <option value="media/libero/multiIL-90/task_43">Put the white bowl on top of the cabinet</option>
+            <option value="media/libero/multiIL-90/task_44">Turn on the stove</option>
+            <option value="media/libero/multiIL-90/task_45">Turn on the stove and put the frying pan on it</option>
+            <option value="media/libero/multiIL-90/task_46">Pick up the alphabet soup and put it in the basket</option>
+            <option value="media/libero/multiIL-90/task_47">Pick up the cream cheese box and put it in the basket</option>
+            <option value="media/libero/multiIL-90/task_48">Pick up the ketchup and put it in the basket</option>
+            <option value="media/libero/multiIL-90/task_49">Pick up the tomato sauce and put it in the basket</option>
+            <option value="media/libero/multiIL-90/task_50">Pick up the alphabet soup and put it in the basket</option>
+            <option value="media/libero/multiIL-90/task_51">Pick up the butter and put it in the basket</option>
+            <option value="media/libero/multiIL-90/task_52">Pick up the milk and put it in the basket</option>
+            <option value="media/libero/multiIL-90/task_53">Pick up the orange juice and put it in the basket</option>
+            <option value="media/libero/multiIL-90/task_54">Pick up the tomato sauce and put it in the basket</option>
+            <option value="media/libero/multiIL-90/task_55">Pick up the alphabet soup and put it in the tray</option>
+            <option value="media/libero/multiIL-90/task_56">Pick up the butter and put it in the tray</option>
+            <option value="media/libero/multiIL-90/task_57">Pick up the cream cheese and put it in the tray</option>
+            <option value="media/libero/multiIL-90/task_58">Pick up the ketchup and put it in the tray</option>
+            <option value="media/libero/multiIL-90/task_59">Pick up the tomato sauce and put it in the tray</option>
+            <option value="media/libero/multiIL-90/task_60">Pick up the black bowl on the left and put it in the tray</option>
+            <option value="media/libero/multiIL-90/task_61">Pick up the chocolate pudding and put it in the tray</option>
+            <option value="media/libero/multiIL-90/task_62">Pick up the salad dressing and put it in the tray</option>
+            <option value="media/libero/multiIL-90/task_63">Stack the left bowl on the right bowl and place them in the tray</option>
+            <option value="media/libero/multiIL-90/task_64">Stack the right bowl on the left bowl and place them in the tray</option>
+            <option value="media/libero/multiIL-90/task_65">Put the red mug on the left plate</option>
+            <option value="media/libero/multiIL-90/task_66">Put the red mug on the right plate</option>
+            <option value="media/libero/multiIL-90/task_67">Put the white mug on the left plate</option>
+            <option value="media/libero/multiIL-90/task_68">Put the yellow and white mug on the right plate</option>
+            <option value="media/libero/multiIL-90/task_69">Put the chocolate pudding to the left of the plate</option>
+            <option value="media/libero/multiIL-90/task_70">Put the chocolate pudding to the right of the plate</option>
+            <option value="media/libero/multiIL-90/task_71">Put the red mug on the plate</option>
+            <option value="media/libero/multiIL-90/task_72">Put the white mug on the plate</option>
+            <option value="media/libero/multiIL-90/task_73">Pick up the book and place it in the front compartment of the caddy</option>
+            <option value="media/libero/multiIL-90/task_74">Pick up the book and place it in the left compartment of the caddy</option>
+            <option value="media/libero/multiIL-90/task_75">Pick up the book and place it in the right compartment of the caddy</option>
+            <option value="media/libero/multiIL-90/task_76">Pick up the yellow and white mug and place it to the right of the caddy</option>
+            <option value="media/libero/multiIL-90/task_77">Pick up the book and place it in the back compartment of the caddy</option>
+            <option value="media/libero/multiIL-90/task_78">Pick up the book and place it in the front compartment of the caddy</option>
+            <option value="media/libero/multiIL-90/task_79">Pick up the book and place it in the left compartment of the caddy</option>
+            <option value="media/libero/multiIL-90/task_80">Pick up the book and place it in the right compartment of the caddy</option>
+            <option value="media/libero/multiIL-90/task_81">Pick up the book and place it in the front compartment of the caddy</option>
+            <option value="media/libero/multiIL-90/task_82">Pick up the book and place it in the left compartment of the caddy</option>
+            <option value="media/libero/multiIL-90/task_83">Pick up the book and place it in the right compartment of the caddy</option>
+            <option value="media/libero/multiIL-90/task_84">Pick up the red mug and place it to the right of the caddy</option>
+            <option value="media/libero/multiIL-90/task_85">Pick up the white mug and place it to the right of the caddy</option>
+            <option value="media/libero/multiIL-90/task_86">Pick up the book in the middle and place it on the cabinet shelf</option>
+            <option value="media/libero/multiIL-90/task_87">Pick up the book on the left and place it on top of the shelf</option>
+            <option value="media/libero/multiIL-90/task_88">Pick up the book on the right and place it on the cabinet shelf</option>
+            <option value="media/libero/multiIL-90/task_89">Pick up the book on the right and place it under the cabinet shelf</option>
+        </select>
+
+        <div id="video-container">
+            <video id="selected-video1" controls>
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <script>
+            function displayVideo1() {
+                var selectElement = document.getElementById("video-select1");
+                var selectedVideo = selectElement.options[selectElement.selectedIndex].value;
+                var videoElement = document.getElementById("selected-video1");
+                videoElement.src = `${selectedVideo}/0.mp4`;
+            }
+
+            // Display the first video when the page loads
+            displayVideo1();
+        </script>
+        <br><br>
+
+        <hr>
+        <h2>LIBERO-LONG Rollouts</h2>
+        <br>
+        <label for="video-select2">Task:</label>
+        <select id="video-select2" onchange="displayVideo2()">
+            <option value="media/libero/multiIL-long/task_0">Put both the alphabet soup and the tomato sauce in the basket</option>
+            <option value="media/libero/multiIL-long/task_1">Put both the cream cheese box and the butter in the basket</option>
+            <option value="media/libero/multiIL-long/task_2">Turn on the stove and put the moka pot on it</option>
+            <option value="media/libero/multiIL-long/task_3">Put the black bowl in the bottom drawer of the cabinet and close it</option>
+            <option value="media/libero/multiIL-long/task_4">Put the white mug on the left plate and put the yellow and white mug on the right plate</option>
+            <option value="media/libero/multiIL-long/task_5">Pick up the book and place it in the back compartment of the caddy</option>
+            <option value="media/libero/multiIL-long/task_6">Put the white mug on the plate and put the chocolate pudding to the right of the plate</option>
+            <option value="media/libero/multiIL-long/task_7">Put both the alphabet soup and the cream cheese box in the basket</option>
+            <option value="media/libero/multiIL-long/task_8">Put both moka pots on the stove</option>
+            <option value="media/libero/multiIL-long/task_9">Put the yellow and white mug in the microwave and close it</option>
+        </select>
+
+        <div id="video-container">
+            <video id="selected-video2" controls>
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <script>
+            function displayVideo2() {
+                var selectElement = document.getElementById("video-select2");
+                var selectedVideo = selectElement.options[selectElement.selectedIndex].value;
+                var videoElement = document.getElementById("selected-video2");
+                videoElement.src = `${selectedVideo}/0.mp4`;
+            }
+
+            // Display the first video when the page loads
+            displayVideo2();
+        </script>
+        <br><br>
+
+        <hr>
+        <h2>Fewshot LIBERO-LONG Rollouts</h2>
+        <br>
+        <label for="video-select3">Task:</label>
+        <select id="video-select3" onchange="displayVideo3()">
+            <option value="media/libero/fewIL-long/task_0">Put both the alphabet soup and the tomato sauce in the basket</option>
+            <option value="media/libero/fewIL-long/task_1">Put both the cream cheese box and the butter in the basket</option>
+            <option value="media/libero/fewIL-long/task_2">Turn on the stove and put the moka pot on it</option>
+            <option value="media/libero/fewIL-long/task_3">Put the black bowl in the bottom drawer of the cabinet and close it</option>
+            <option value="media/libero/fewIL-long/task_4">Put the white mug on the left plate and put the yellow and white mug on the right plate</option>
+            <option value="media/libero/fewIL-long/task_5">Pick up the book and place it in the back compartment of the caddy</option>
+            <option value="media/libero/fewIL-long/task_6">Put the white mug on the plate and put the chocolate pudding to the right of the plate</option>
+            <option value="media/libero/fewIL-long/task_7">Put both the alphabet soup and the cream cheese box in the basket</option>
+            <option value="media/libero/fewIL-long/task_8">Put both moka pots on the stove</option>
+            <option value="media/libero/fewIL-long/task_9">Put the yellow and white mug in the microwave and close it</option>
+        </select>
+
+        <div id="video-container">
+            <video id="selected-video3" controls>
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <script>
+            function displayVideo3() {
+                var selectElement = document.getElementById("video-select3");
+                var selectedVideo = selectElement.options[selectElement.selectedIndex].value;
+                var videoElement = document.getElementById("selected-video3");
+                videoElement.src = `${selectedVideo}/0.mp4`;
+            }
+
+            // Display the first video when the page loads
+            displayVideo3();
+        </script>
+        <br><br>
+
+    </section>
+
+   
+
+    <section>
+        This webpage template was recycled from <a href='https://nv-tlabs.github.io/LION/'>here</a>.
+    </section>
+    
+
+
+</div>
 </body>
 </html>
